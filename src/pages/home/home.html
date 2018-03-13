@@ -1,20 +1,28 @@
 <ion-header>
   <ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addEmployee()">
+            <ion-icon name="add">
+            </ion-icon>
+        </button>
+    </ion-buttons>
     <ion-title>
-      Ionic Blank
+      Vehicles
     </ion-title>
-    <ion-fab top right edge style="padding-top: 30px">
-      <button ion-fab mini><ion-icon name="add"></ion-icon></button>
-    </ion-fab>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-searchbar (ionInput)="getItems($event)" ></ion-searchbar>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
-    <ion-item *ngFor="let item of items" (click)="itemSelected(item)">
-      <ion-label> {{ item }} </ion-label>
-      <ion-label style="    text-align: right"> 100 </ion-label>
-    </ion-item>
+    <button ion-item *ngFor="let item of vehicles" (click)="itemSelected(item)">
+        {{ item.employeeName }}
+    </button>
   </ion-list>
+
+  <!--<ion-list>
+    <ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+      <ion-label> {{ item.name }} </ion-label>
+    </ion-item>
+  </ion-list>-->
 </ion-content>

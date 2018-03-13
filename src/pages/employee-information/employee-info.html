@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            {{ item.employeeName }}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+    <ion-list>
+        <ion-item>
+            <ion-label>Today</ion-label>
+            <ion-label style="text-align: right">{{myDate | date:'dd-MM-yyyy'}}</ion-label>
+
+        </ion-item>
+
+        <ion-item>
+            <ion-label> Pending Amount </ion-label>
+            <ion-label style="text-align: right"> 100 </ion-label>
+        </ion-item>
+
+        <ion-item>
+            <ion-label> Total Amount </ion-label>
+            <ion-label style="text-align: right"> 200 </ion-label>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Now Pay</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <button ion-button medium> Submit </button>
+        </ion-item>
+
+    </ion-list>
+
+</ion-content>

@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Register New Vehicle
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <form (ngSubmit)="registerEmployee(myForm)"  [formGroup]="myForm">
+        <ion-item>
+            <ion-label>Employee Name</ion-label>
+            <ion-input type="text" name="employeeName" formControlName="employeeName" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Mobile Number</ion-label>
+            <ion-input type="number" name="mobileNumber" formControlName="mobileNumber" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Area</ion-label>
+            <ion-input type="text" name="area" formControlName="area" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Start Date</ion-label>
+            <!--<ion-input type="text" name="StartDate" ngModel required></ion-input>-->
+            <ion-datetime displayFormat="DD-MM-YYYY" formControlName="startDate" required></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Daily Collection</ion-label>
+            <ion-input type="number" name="dailyCollection" formControlName="dailyCollection" required></ion-input>
+        </ion-item>
+        <button ion-button block type="submit" [disabled]="!myForm.valid">Add Employee</button>
+    </form>
+</ion-content>

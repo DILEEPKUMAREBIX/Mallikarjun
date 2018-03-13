@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { EmployeeInfo } from '../information/employee-info';
+import { EmployeeInfo } from '../employee-information/employee-info';
+import { RegisterEmployee } from '../register-employee/register-employee.component';
+
+import { AF } from '../../app/services/af';
+import { LoadingController } from 'ionic-angular';
+
 
 @Component({
   selector: 'page-home',
@@ -9,32 +14,56 @@ import { EmployeeInfo } from '../information/employee-info';
 export class HomePage {
 
   items: any = [];
+  vehicles: any = [];
+  loader: any
 
-  constructor(public navCtrl: NavController) {
-    this.initializeItems();
-  }
+  constructor(public navCtrl: NavController, private _afService: AF, public loadingCtrl: LoadingController) {
 
-  itemSelected(item: any) {
-    this.navCtrl.push(EmployeeInfo);
+    this.loader = this.loadingCtrl.create({
+      content: "Please wait...",
+    });
+    this.loader.present();
+
+    this._afService.messages.subscribe(
+      (vehicles) => {
+        this.items = vehicles;
+        this.initializeItems();
+        this.loader.dismiss();
+      }
+    );
   }
 
   initializeItems() {
-    this.items = ["Emp1", "Emp2", "Emp3", "Emp4", "Emp5", "Emp6", "Emp7", "Emp8", "Emp9"];
+    this.vehicles = [];
+    this.vehicles = this.items;
   }
 
   getItems(ev: any) {
-    // Reset items back to all of the items
     this.initializeItems();
-
-    // set val to the value of the searchbar
     let val = ev.target.value;
-
-    // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
-      this.items = this.items.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      this.vehicles = this.vehicles.filter((item) => {
+        return (item.employeeName.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }
 
+  itemSelected(item: any) {
+    this.navCtrl.push(EmployeeInfo, {
+      item: item
+    });
+  }
+
+  addEmployee() {
+    this.navCtrl.push(RegisterEmployee);
+  }
+
 }
+
+export interface Vechicle {
+  id: any;
+  name: any;
+  mobile: any;
+  address: any;
+}
+

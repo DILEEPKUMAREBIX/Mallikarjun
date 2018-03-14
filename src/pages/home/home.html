@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-buttons end>
-      <button ion-button icon-only (click)="addEmployee()">
+      <button ion-button icon-only (click)="addVehicle()">
             <ion-icon name="add">
             </ion-icon>
         </button>
@@ -14,15 +14,33 @@
 
 <ion-content>
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-  <ion-list>
+  <!--<ion-list>
     <button ion-item *ngFor="let item of vehicles" (click)="itemSelected(item)">
         {{ item.employeeName }}
     </button>
-  </ion-list>
+  </ion-list>-->
 
   <!--<ion-list>
     <ion-item *ngFor="let item of items" (click)="itemSelected(item)">
       <ion-label> {{ item.name }} </ion-label>
     </ion-item>
   </ion-list>-->
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of vehicles | async">
+      <button ion-item (click)="itemSelected(item)">
+        {{ item.employeeName }}
+      </button>
+      <ion-item-options>
+        <button ion-button color="primary" icon-left (click)="editVehicle(item)">
+          <ion-icon name="ios-create"></ion-icon>
+          Edit
+        </button>
+        <button ion-button color="danger" icon-left (click)="deleteVehicle(item.key)">
+          <ion-icon name="ios-trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
 </ion-content>

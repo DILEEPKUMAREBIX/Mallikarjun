@@ -1,13 +1,13 @@
 <ion-header>
     <ion-navbar>
         <ion-title>
-            Register New Vehicle
+            {{pageHeading}}
         </ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content>
-    <form (ngSubmit)="registerEmployee(myForm)"  [formGroup]="myForm">
+    <form (ngSubmit)="registerEmployee(myForm)" [formGroup]="myForm">
         <ion-item>
             <ion-label>Employee Name</ion-label>
             <ion-input type="text" name="employeeName" formControlName="employeeName" required></ion-input>
@@ -33,6 +33,7 @@
             <ion-label>Daily Collection</ion-label>
             <ion-input type="number" name="dailyCollection" formControlName="dailyCollection" required></ion-input>
         </ion-item>
-        <button ion-button block type="submit" [disabled]="!myForm.valid">Add Employee</button>
+        <button *ngIf="action != 'Edit'" ion-button block type="submit" [disabled]="!myForm.valid">Add Employee</button>
+        <button *ngIf="action == 'Edit'" ion-button block type="submit" [disabled]="!myForm.valid">Update Employee</button>
     </form>
 </ion-content>

@@ -15,7 +15,7 @@ import { RegisterEmployee } from '../pages/register-employee/register-employee.c
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-
+import { DatePipe } from '@angular/common';
 import { AF } from './services/af'
 
 
@@ -53,6 +53,7 @@ export const firebaseConfig = {
   ],
   providers: [
     StatusBar,
+    DatePipe,
     SplashScreen,
     AF,
     { provide: ErrorHandler, useClass: IonicErrorHandler }

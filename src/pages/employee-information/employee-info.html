@@ -18,21 +18,26 @@
 
         <ion-item>
             <ion-label> Pending Amount </ion-label>
-            <ion-label style="text-align: right"> 100 </ion-label>
+            <ion-label style="text-align: right"> {{item.previousBalance}} </ion-label>
+        </ion-item>
+
+        <ion-item>
+            <ion-label> Today Amount </ion-label>
+            <ion-label style="text-align: right"> {{item.dailyCollection}} </ion-label>
         </ion-item>
 
         <ion-item>
             <ion-label> Total Amount </ion-label>
-            <ion-label style="text-align: right"> 200 </ion-label>
+            <ion-label style="text-align: right"> {{totalValue}} </ion-label>
         </ion-item>
 
         <ion-item>
             <ion-label>Now Pay</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input type="text" #payment></ion-input>
         </ion-item>
 
         <ion-item>
-            <button ion-button medium> Submit </button>
+            <button ion-button medium (click)="submitPayment(payment.value)"> Submit </button>
         </ion-item>
 
     </ion-list>

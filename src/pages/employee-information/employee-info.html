@@ -11,14 +11,19 @@
 
     <ion-list>
         <ion-item>
-            <ion-label>Today</ion-label>
-            <ion-label style="text-align: right">{{myDate | date:'dd-MM-yyyy'}}</ion-label>
-
+            <ion-label (click)="decreaseDate()">
+                <ion-icon name="arrow-back"></ion-icon>
+            </ion-label>
+            <ion-label>{{myDate}}</ion-label>
+            <!--<ion-label (click)="selectToDate()">ToDay</ion-label>-->
+            <ion-label style="text-align: right" (click)="increaseDate()">
+                <ion-icon name="arrow-forward"></ion-icon>
+            </ion-label>
         </ion-item>
 
         <ion-item>
             <ion-label> Pending Amount </ion-label>
-            <ion-label style="text-align: right"> {{item.previousBalance}} </ion-label>
+            <ion-label style="text-align: right"> {{previousBalance}} </ion-label>
         </ion-item>
 
         <ion-item>

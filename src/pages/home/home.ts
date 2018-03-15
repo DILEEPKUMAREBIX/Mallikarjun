@@ -40,7 +40,9 @@ export class HomePage {
     this.initializeItems();
     let val = ev.target.value;
     if (val && val.trim() != '') {
-      this.vehicles = this.vehicles.map(projects => projects.filter(proj => proj.employeeName.toLowerCase().indexOf(val.toLowerCase()) > -1));
+      this.vehicles = this.vehicles.map(projects =>
+        projects.filter(proj => proj.employeeName.toLowerCase().indexOf(val.toLowerCase()) > -1
+          || proj.mobileNumber.indexOf(val.toLowerCase()) > -1));
     }
   }
 
